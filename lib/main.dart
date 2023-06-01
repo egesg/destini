@@ -67,7 +67,7 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 12,
                 child: Center(
                   child: Text(
-                    storyText,
+                    storyBrain.getStory(),
                     style: const TextStyle(
                       fontSize: 25.0,
                     ),
@@ -78,13 +78,17 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: TextButton(
                   onPressed: () {
-                    storyBrain.nextStory(1);
+                    setState(
+                      () {
+                        storyBrain.nextStory(1);
+                      },
+                    );
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
                   ),
                   child: Text(
-                    choice1,
+                    storyBrain.getChoice1(),
                     style: const TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
@@ -99,13 +103,17 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: TextButton(
                   onPressed: () {
-                    storyBrain.nextStory(2);
+                    setState(
+                      () {
+                        storyBrain.nextStory(2);
+                      },
+                    );
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.blue),
                   ),
                   child: Text(
-                    choice2,
+                    storyBrain.getChoice2(),
                     style: const TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
