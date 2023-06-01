@@ -1,6 +1,6 @@
 # destini
 
-A new Flutter project.
+https://github.com/egesg/destini/assets/122566233/48204626-3550-4fcd-933f-5c2c29c666d1
 
 ## Getting Started
 
