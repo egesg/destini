@@ -77,7 +77,9 @@ class _StoryPageState extends State<StoryPage> {
               Expanded(
                 flex: 2,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    storyBrain.nextStory(1);
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
                   ),
@@ -96,7 +98,9 @@ class _StoryPageState extends State<StoryPage> {
               Expanded(
                 flex: 2,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    storyBrain.nextStory(2);
+                  },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.blue),
                   ),
