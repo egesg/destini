@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'story_brain.dart';
+
+StoryBrain storyBrain = StoryBrain();
 
 void main() {
   runApp(const Destini());
@@ -24,27 +27,48 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
+  late String storyText;
+  late String choice1;
+  late String choice2;
+
+  @override
+  void initState() {
+    super.initState();
+    updateStory();
+  }
+
+  void updateStory() {
+    setState(
+      () {
+        storyText = storyBrain.getStory();
+        choice1 = storyBrain.getChoice1();
+        choice2 = storyBrain.getChoice2();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage('images/background.png'),
-          fit: BoxFit.cover,
-        )),
+          image: DecorationImage(
+            image: AssetImage('images/background.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
         padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
         constraints: const BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              const Expanded(
+              Expanded(
                 flex: 12,
                 child: Center(
                   child: Text(
-                    'Story text will go here.',
-                    style: TextStyle(
+                    storyText,
+                    style: const TextStyle(
                       fontSize: 25.0,
                     ),
                   ),
@@ -57,10 +81,9 @@ class _StoryPageState extends State<StoryPage> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red),
                   ),
-                  child: const Text(
-                    // todo
-                    'Choice 1',
-                    style: TextStyle(
+                  child: Text(
+                    choice1,
+                    style: const TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
                     ),
@@ -77,9 +100,9 @@ class _StoryPageState extends State<StoryPage> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.blue),
                   ),
-                  child: const Text(
-                    'Choice 2',
-                    style: TextStyle(
+                  child: Text(
+                    choice2,
+                    style: const TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
                     ),
